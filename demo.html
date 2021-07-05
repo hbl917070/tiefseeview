@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 
 <head>
     <meta charset="UTF-8">
@@ -89,19 +89,21 @@
     <div id="dd"> </div>
 
 
-
     <script>
 
         var tv;
 
+        /**
+         * 載入圖片
+         **/
         async function loadurl() {
 
             let _url = $('#imgurl').val();
 
             await tv.loadImg(_url);
-            tv.transformRefresh(false)
-            tv.zoomFull(TieefseeviewZoomType['full-100%']);
-            $('#output-size').html(`${tv.getOriginalWidth()} , ${tv.getOriginalHeight()}`);
+            tv.transformRefresh(false);//初始化旋轉與鏡像
+            tv.zoomFull(TieefseeviewZoomType['full-100%']);//圖片大於視窗時填滿視窗，否則顯示原始圖片大小
+            $('#output-size').html(`${tv.getOriginalWidth()} , ${tv.getOriginalHeight()}`);//圖片原始大小
         }
 
 
@@ -110,35 +112,43 @@
         document.addEventListener('DOMContentLoaded', async () => {
 
             tv = new Tieefseeview(document.querySelector('#tiefseeview'));
-            //tv.setOverflowDistance(0);
+            //tv.setOverflowDistance(0);//圖片拖曳允許的溢位距離
             loadurl()
 
+            //圖片縮放，或顯示圖片的區塊縮放時
             tv.setEventChangeZoom((ratio) => {
                 $('#output-zoom').html((ratio * 100).toFixed(2) + '%');
                 $('#output-overflow').html(`水平：${tv.getIsOverflowX()}  垂直：${tv.getIsOverflowY()}`);
             })
+
+            //圖片旋轉時
             tv.setEventChangeDeg((deg) => {
                 $('#output-deg').html(deg);
                 $('#range_dge').val(deg);
             })
+
+            //圖片鏡像時
             tv.setEventChangeMirror((isMirrorHorizontal, isMirrorVertica) => {
                 $('#output-mirror').html(`水平鏡像：${isMirrorHorizontal}  垂直鏡像：${isMirrorVertica}`);
             })
+
+            //圖片坐標改變時
             tv.setEventChangeXY((x, y) => {
                 $('#output-xy').html(`${x.toFixed(2)} , ${y.toFixed(2)}`);
             })
 
 
+            var range_dge = document.querySelector('#range_dge');
+            range_dge.addEventListener('input', () => {
+                //console.log(range_dge.value)
+                tv.setDeg(range_dge.value, undefined, undefined, false);//從中心設定角度，無動畫
+            })
         });
 
 
 
 
-        var range_dge = document.querySelector('#range_dge');
-        range_dge.addEventListener('input', () => {
-            //console.log(range_dge.value)
-            tv.setDeg(range_dge.value, undefined, undefined, false, true)
-        })
+
 
     </script>
 
