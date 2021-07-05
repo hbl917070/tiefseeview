@@ -51,12 +51,18 @@
     <input id="range_dge" type="range" min="0" max="360" step="1" value="0" style="width:100px">
     <hr>
 
-    <label> <input type="radio" name="rendering" onclick="tv.setRendering(TieefseeviewImageRendering['auto'])" checked>
-        平滑 </label>
-    <label> <input type="radio" name="rendering" onclick="tv.setRendering(TieefseeviewImageRendering['pixelated'])"> 銳利
+    <label>
+        <input type="radio" name="rendering" onclick="tv.setRendering(TieefseeviewImageRendering['auto'])" checked>
+        平滑
     </label>
-    <label> <input type="radio" name="rendering"
-            onclick="tv.setRendering(TieefseeviewImageRendering['auto-pixelated'])"> 僅放大時銳利 </label>
+    <label>
+        <input type="radio" name="rendering" onclick="tv.setRendering(TieefseeviewImageRendering['pixelated'])">
+        銳利
+    </label>
+    <label>
+        <input type="radio" name="rendering" onclick="tv.setRendering(TieefseeviewImageRendering['auto-pixelated'])">
+        僅放大時銳利
+    </label>
 
 
     <div id="tiefseeview"></div>
