@@ -2,7 +2,9 @@
 以typescript撰寫的 圖片檢視器，能直接運行於瀏覽器
 
 ## 測試網址
-https://hbl917070.github.io/tiefseeview/demo.html
+https://hbl917070.github.io/tiefseeview/test-Tiefseeview.html
+
+https://hbl917070.github.io/tiefseeview/test-TiefseeScroll.html
 
 ## 依賴
 * jquery 3.6
