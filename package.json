@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@types/hammerjs": "^2.0.39",
-    "@types/jquery": "^3.5.5"
+    "@types/jquery": "^3.5.5",
+    "gulp": "^4.0.2",
+    "gulp-esbuild": "^0.11.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.69.5"
   }
 }
